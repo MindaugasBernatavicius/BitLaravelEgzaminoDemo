@@ -9,8 +9,11 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        // $this->call(UserSeeder::class);
+    public function run(){
+        DB::table('users')->insert([
+            'name' => 'Mindaugas',
+            'email' => 'mindaugas@gmail.com',
+            'password' => Hash::make('mindaugas'),
+        ]);
     }
 }

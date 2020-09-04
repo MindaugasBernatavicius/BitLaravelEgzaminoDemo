@@ -13,15 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth'])->group(function(){
+    Route::get('/', 'CustomerController@index');
+    Route::resource('customers', 'CustomerController');
+    Route::resource('country', 'CountryController');
+    Route::resource('town', 'TownController');
+    Route::get('customers/{id}/travel', 'CustomerController@travel')->name('customers.travel');
 });
 
-Route::resource('customers', 'CustomerController');
-Route::resource('country', 'CountryController');
-Route::resource('town', 'TownController');
-
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
