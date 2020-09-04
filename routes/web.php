@@ -21,5 +21,5 @@ Route::middleware(['auth'])->group(function(){
     Route::get('customers/{id}/travel', 'CustomerController@travel')->name('customers.travel');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
